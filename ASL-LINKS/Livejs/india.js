@@ -1,1 +1,162 @@
-document.write("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Live Match Updates<\/title>\r\n    <style>\r\n        \/* Styling for the image card1 container *\/\r\n        .card1 {\r\n            width: 100%;\r\n            margin: 0px;\r\n            border: 2px solid #ddd; \/* Border around the card1 *\/\r\n            border-radius: 10px; \/* Rounded corners *\/\r\n            overflow: hidden;\r\n            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);\r\n            position: relative;\r\n            background-color: white;\r\n            transition: transform 0.3s ease;\r\n        }\r\n\r\n        .card1:hover {\r\n            transform: translateY(-10px); \/* Slightly raise card1 on hover *\/\r\n        }\r\n\r\n        \/* Styling for hoverable images *\/\r\n        .card1 img {\r\n            width: 100%;\r\n            height: auto;\r\n            display: block;\r\n            transition: opacity 0.3s ease;\r\n        }\r\n\r\n        \/* caption1 styling *\/\r\n        .caption1 {\r\n            padding: 10px;\r\n            text-align: center;\r\n            font-size: 23px;\r\n            color: green;\r\n            background-color: black;\r\n            border-top: 1px solid #ddd;\r\n            font-weight: bold; \/* Make the title bold *\/\r\n        }\r\n\r\n        \/* description1 styling *\/\r\n        .description1 {\r\n            font-size: 15px;\r\n            color: yellow; \/* Slightly gray color for description1 *\/\r\n            margin-top: 5px;\r\n        }\r\n\r\n        \/* Countdown Timer Styling *\/\r\n        .countdown-timer {\r\n            position: absolute;\r\n            bottom: 10px;\r\n            right: 10px; \/* Align the countdown timer to the top right corner *\/\r\n            background-color: rgba(0, 0, 0, 0.7);\r\n            color: white;\r\n            font-size: 14px;\r\n            padding: 0px 0px;\r\n            border-radius: 5px;\r\n        }\r\n\r\n        \/* Styling for blinking \"Live Now\" button *\/\r\n        .blink-button1 {\r\n            position: absolute;\r\n            bottom: 10px;\r\n            right: 10px;\r\n            padding: 2px 5px;\r\n            background-color: red;\r\n            color: white;\r\n            font-size: 16px;\r\n            font-weight: bold;\r\n            border: none;\r\n            border-radius: 5px;\r\n            cursor: pointer;\r\n            display: none; \/* Hidden by default *\/\r\n        }\r\n\r\n        .blink-button1:hover {\r\n            background-color: darkred;\r\n        }\r\n\r\n        \/* Blinking animation *\/\r\n        @keyframes blink {\r\n            0%, 100% { opacity: 1; }\r\n            50% { opacity: 0; }\r\n        }\r\n\r\n        .blink-button1 {\r\n            animation: blink 0.5s infinite; \/* Faster blinking effect (0.5s) *\/\r\n        }\r\n \/* Hide underline in links *\/\r\n        .card1 a {\r\n            text-decoration: none;\r\n        }\r\n        \/* Ensure responsiveness *\/\r\n        @media (max-width: 600px) {\r\n            .card1 {\r\n                width: 100%; \/* Adjust card1 width on small screens *\/\r\n            }\r\n        }\r\n    <\/style>\r\n    <script>\r\n        \/\/ Set the future event time (adjust the date and time)\r\n        const eventTime = new Date('Mar 09, 2025 13:30:00'); \/\/ Set the event date and time\r\n\r\n        \/\/ Function to update the countdown timer\r\n        function updateCountdownTimer() {\r\n            const currentTime = new Date();\r\n            const timeRemaining = eventTime - currentTime;\r\n\r\n            if (timeRemaining <= 0) {\r\n                \/\/ Hide countdown timer and show the \"Live Now\" button\r\n                document.getElementById('countdown-timer').style.display = 'none'; \/\/ Hide countdown timer\r\n                document.getElementById('live-button').style.display = 'inline-block'; \/\/ Show Live Now button\r\n                return;\r\n            }\r\n\r\n            const days = Math.floor(timeRemaining \/ (1000 * 60 * 60 * 24));\r\n            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) \/ (1000 * 60 * 60));\r\n            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) \/ (1000 * 60));\r\n            const seconds = Math.floor((timeRemaining % (1000 * 60)) \/ 1000);\r\n\r\n            document.getElementById('countdown-timer').innerHTML = \r\n                days + \"d \" + hours + \"h \" + minutes + \"m \" + seconds + \"s \";\r\n        }\r\n\r\n        \/\/ Run the check function every second to update countdown in real time\r\n        setInterval(updateCountdownTimer, 1000); \/\/ Update every second (1000 ms)\r\n\r\n        \/\/ Run the check function on page load\r\n        window.onload = function() {\r\n            updateCountdownTimer(); \/\/ Update timer immediately on page load\r\n        }\r\n\r\n        \/\/ Function to open a link in a new tab\r\n        function openLink(url) {\r\n            window.open(url, '_blank'); \/\/ Open the link in a new tab\r\n        }\r\n    <\/script>\r\n<\/head>\r\n<body>\r\n    <!-- Image card1 with caption1, Bold Title, and description1 -->\r\n    <div class=\"card1\"><a href=\"https:\/\/bindaaslinks.com\/36B3zMu\">\r\n        <img src=\"https:\/\/iili.io\/3FwmU57.md.jpg\" \r\n             alt=\"INDIA vs ENGLAND\" >\r\n        <div class=\"caption1\">\r\n            INDIA vs NEW ZEALAND\r\n            <p class=\"description1\">\r\n               | ODI Champions \ud83c\udfc6| Final |\r\n            <\/p>\r\n        <\/div>\r\n        <div class=\"countdown-timer\" id=\"countdown-timer\"><\/div> <!-- Countdown Timer -->\r\n        <button class=\"blink-button1\" id=\"live-button\">Live Now<\/button> <\/a><!-- Live Now Button -->\r\n    <\/div>\r\n<\/body>\r\n<\/html>\r\n\r\n\r\n<!------->");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Match Updates</title>
+    <style>
+        /* Styling for the image card1 container */
+        .card1 {
+            width: 100%;
+            margin: 0px;
+            border: 2px solid #ddd; /* Border around the card1 */
+            border-radius: 10px; /* Rounded corners */
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            position: relative;
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .card1:hover {
+            transform: translateY(-10px); /* Slightly raise card1 on hover */
+        }
+
+        /* Styling for hoverable images */
+        .card1 img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* caption1 styling */
+        .caption1 {
+            padding: 10px;
+            text-align: center;
+            font-size: 23px;
+            color: green;
+            background-color: black;
+            border-top: 1px solid #ddd;
+            font-weight: bold; /* Make the title bold */
+        }
+
+        /* description1 styling */
+        .description1 {
+            font-size: 15px;
+            color: yellow; /* Slightly gray color for description1 */
+            margin-top: 5px;
+        }
+
+        /* Countdown Timer Styling */
+        .countdown-timer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px; /* Align the countdown timer to the top right corner */
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 14px;
+            padding: 0px 0px;
+            border-radius: 5px;
+        }
+
+        /* Styling for blinking "Live Now" button */
+        .blink-button1 {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 2px 5px;
+            background-color: red;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        }
+
+        .blink-button1:hover {
+            background-color: darkred;
+        }
+
+        /* Blinking animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .blink-button1 {
+            animation: blink 0.5s infinite; /* Faster blinking effect (0.5s) */
+        }
+ /* Hide underline in links */
+        .card1 a {
+            text-decoration: none;
+        }
+        /* Ensure responsiveness */
+        @media (max-width: 600px) {
+            .card1 {
+                width: 100%; /* Adjust card1 width on small screens */
+            }
+        }
+    </style>
+    <script>
+        // Set the future event time (adjust the date and time)
+        const eventTime = new Date('Mar 22, 2025 13:30:00'); // Set the event date and time
+
+        // Function to update the countdown timer
+        function updateCountdownTimer() {
+            const currentTime = new Date();
+            const timeRemaining = eventTime - currentTime;
+
+            if (timeRemaining <= 0) {
+                // Hide countdown timer and show the "Live Now" button
+                document.getElementById('countdown-timer').style.display = 'none'; // Hide countdown timer
+                document.getElementById('live-button').style.display = 'inline-block'; // Show Live Now button
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown-timer').innerHTML = 
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        }
+
+        // Run the check function every second to update countdown in real time
+        setInterval(updateCountdownTimer, 1000); // Update every second (1000 ms)
+
+        // Run the check function on page load
+        window.onload = function() {
+            updateCountdownTimer(); // Update timer immediately on page load
+        }
+
+        // Function to open a link in a new tab
+        function openLink(url) {
+            window.open(url, '_blank'); // Open the link in a new tab
+        }
+    </script>
+</head>
+<body>
+    <!-- Image card1 with caption1, Bold Title, and description1 -->
+    <div class="card1"><a href="https://bindaaslinks.com/36B3zMu">
+        <img src="https://iili.io/3Fw7LmP.md.jpg" 
+             alt="INDIA vs ENGLAND" >
+        <div class="caption1">
+         KKR vs RCB
+            <p class="description1">
+              India Premier Ieague  🏆| Match no. 1 |
+            </p>
+        </div>
+        <div class="countdown-timer" id="countdown-timer"></div> <!-- Countdown Timer -->
+        <button class="blink-button1" id="live-button">Live Now</button> </a><!-- Live Now Button -->
+    </div>
+</body>
+</html>
+
+
+<!------->
+
+
